@@ -14,34 +14,20 @@ public class App {
 
 		File src = new File("file.txt");
 
-		double randTime = RandomAccessCopier.copy(src,
-				new File("rand_file.txt"));
+		double randTime = RandomAccessCopier.copy(src, new File("rand_file.txt"));
+		System.out.println("RandomAccessCopier :\t" + Math.round(randTime) + " ms.");
 
-		System.out.println("RandomAccessCopier :\t" + Math.round(randTime)
-				+ " ms.");
+		double randBuffTime = BufferedRandomAccessCopier.copy(src, new File("buff_rand_file.txt"));
+		System.out.println("BufferedRandomAccessCopier :\t" + Math.round(randBuffTime) + " ms.");
 
-		double randBuffTime = BufferedRandomAccessCopier.copy(src, new File(
-				"buff_rand_file.txt"));
+		double byteStreamTime = ByteStreamCopier.copy(src, new File("byte_stream_file.txt"));
+		System.out.println("ByteStreamCopier :\t" + Math.round(byteStreamTime) + " ms.");
 
-		System.out.println("BufferedRandomAccessCopier :\t"
-				+ Math.round(randBuffTime) + " ms.");
-
-		double byteStreamTime = ByteStreamCopier.copy(src, new File(
-				"byte_stream_file.txt"));
-
-		System.out.println("ByteStreamCopier :\t" + Math.round(byteStreamTime)
-				+ " ms.");
-
-		double buffByteStreamTime = BufferedByteStreamCopier.copy(src,
-				new File("buff_byte_stream_file.txt"));
-
-		System.out.println("BufferedByteStreamCopier :\t"
-				+ Math.round(buffByteStreamTime) + " ms.");
+		double buffByteStreamTime = BufferedByteStreamCopier.copy(src, new File("buff_byte_stream_file.txt"));
+		System.out.println("BufferedByteStreamCopier :\t" + Math.round(buffByteStreamTime) + " ms.");
 
 		double nioTime = NioChannelCopier.copy(src, new File("nio_file.txt"));
-
-		System.out.println("NioChannelCopier :\t" + Math.round(nioTime)
-				+ " ms.");
+		System.out.println("NioChannelCopier :\t" + Math.round(nioTime) + " ms.");
 
 	}
 }
